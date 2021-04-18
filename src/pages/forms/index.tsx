@@ -1,6 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { Header } from '../../components/Header';
-import { Sidebar } from '../../components/Sidebar';
+import { Sidebar } from '../../components/Sidebar/Sidebar';
 export default function Forms() {
   return (
     <Box>
