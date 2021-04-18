@@ -1,10 +1,12 @@
-import { Box, Stack, Text, Link, Icon } from '@chakra-ui/react';
+import { Box, Stack, Text } from '@chakra-ui/react';
+
 import {
   RiDashboardLine,
   RiContactsLine,
   RiInputMethodLine,
   RiGitMergeLine,
 } from 'react-icons/ri';
+import { ActiveLink } from './ActiveLink';
 
 export function Sidebar() {
   return (
@@ -15,18 +17,12 @@ export function Sidebar() {
             GERAL
           </Text>
           <Stack spacing='4' mt='8' aling='stretch'>
-            <Link display='flex' align='center'>
-              <Icon as={RiDashboardLine} fontSize='20' />
-              <Text ml='4' fontWeight='medium'>
-                Dashboard
-              </Text>
-            </Link>
-            <Link display='flex' align='center'>
-              <Icon as={RiContactsLine} fontSize='20' />
-              <Text ml='4' fontWeight='medium'>
-                Usuários
-              </Text>
-            </Link>
+            <ActiveLink
+              icon={RiDashboardLine}
+              text='Dashboard'
+              href='/dashboard'
+            />
+            <ActiveLink icon={RiContactsLine} text='Usuários' href='/users' />
           </Stack>
         </Box>
         <Box>
@@ -34,18 +30,16 @@ export function Sidebar() {
             AUTOMAÇÃO
           </Text>
           <Stack spacing='4' mt='8' aling='stretch'>
-            <Link display='flex' align='center'>
-              <Icon as={RiInputMethodLine} fontSize='20' />
-              <Text ml='4' fontWeight='medium'>
-                Formulários
-              </Text>
-            </Link>
-            <Link display='flex' align='center'>
-              <Icon as={RiGitMergeLine} fontSize='20' />
-              <Text ml='4' fontWeight='medium'>
-                Automação
-              </Text>
-            </Link>
+            <ActiveLink
+              icon={RiInputMethodLine}
+              text='Formulários'
+              href='/forms'
+            />
+            <ActiveLink
+              icon={RiGitMergeLine}
+              text='Automação'
+              href='/automations'
+            />
           </Stack>
         </Box>
       </Stack>
