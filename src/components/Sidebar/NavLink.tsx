@@ -8,11 +8,11 @@ import { IconType } from 'react-icons';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
-interface ActiveLinkProps extends ChakraLinkProps {
+interface NavLinkProps extends ChakraLinkProps {
   icon: IconType;
   text: string;
 }
-export function ActiveLink({ icon, text, href, ...rest }: ActiveLinkProps) {
+export function NavLink({ icon, text, href, ...rest }: NavLinkProps) {
   const { asPath } = useRouter();
   const activeColor = asPath === href ? 'pink.500' : '';
 

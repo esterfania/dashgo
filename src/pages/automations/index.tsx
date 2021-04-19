@@ -1,6 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { Header } from '../../components/Header';
-import { Sidebar } from '../../components/Sidebar/Sidebar';
+import { Sidebar } from '../../components/Sidebar';
 export default function Automations() {
   return (
     <Box>
