@@ -10,9 +10,9 @@ import Link from 'next/link';
 
 interface NavLinkProps extends ChakraLinkProps {
   icon: IconType;
-  text: string;
+  children: string;
 }
-export function NavLink({ icon, text, href, ...rest }: NavLinkProps) {
+export function NavLink({ icon, children, href, ...rest }: NavLinkProps) {
   const { asPath } = useRouter();
   const activeColor = asPath === href ? 'pink.500' : '';
 
@@ -21,7 +21,7 @@ export function NavLink({ icon, text, href, ...rest }: NavLinkProps) {
       <ChakraLink display='flex' align='center' color={activeColor} {...rest}>
         <Icon as={icon} fontSize='20' />
         <Text ml='4' fontWeight='medium'>
-          {text}
+          {children}
         </Text>
       </ChakraLink>
     </Link>
