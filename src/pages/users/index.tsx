@@ -13,6 +13,7 @@ import {
   Td,
   Text,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import React from 'react';
 import { RiAddLine, RiPencilLine } from 'react-icons/ri';
 import { Header } from '../../components/Header';
@@ -30,15 +31,17 @@ export default function UserList() {
             <Heading size='lg' fontWeight='normal'>
               Usuários
             </Heading>
-            <Button
-              as='a'
-              size='sm'
-              fontSize='small'
-              colorScheme='pink'
-              leftIcon={<Icon as={RiAddLine} fontSize='20' />}
-            >
-              Criar novo
-            </Button>
+            <Link href='/users/create'>
+              <Button
+                as='a'
+                size='sm'
+                fontSize='small'
+                colorScheme='pink'
+                leftIcon={<Icon as={RiAddLine} fontSize='20' />}
+              >
+                Criar novo
+              </Button>
+            </Link>
           </Flex>
           <Table colorScheme='whiteAlpha'>
             <Thead>
@@ -53,7 +56,7 @@ export default function UserList() {
             </Thead>
             <Tbody>
               <Tr px='6'>
-                <Td colorScheme='pink'>
+                <Td>
                   <Checkbox colorScheme='pink'></Checkbox>
                 </Td>
                 <Td>
@@ -78,7 +81,7 @@ export default function UserList() {
                 </Td>
               </Tr>
               <Tr px='6'>
-                <Td colorScheme='pink'>
+                <Td>
                   <Checkbox colorScheme='pink'></Checkbox>
                 </Td>
                 <Td>

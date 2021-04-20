@@ -12,12 +12,12 @@ interface NavLinkProps extends ChakraLinkProps {
   icon: IconType;
   children: string;
 }
-export function NavLink({ icon, children, href, ...rest }: NavLinkProps) {
+export function NavLink({ icon, children, ...rest }: NavLinkProps) {
   const { asPath } = useRouter();
-  const activeColor = asPath === href ? 'pink.500' : '';
+  const activeColor = asPath === rest.href ? 'pink.500' : '';
 
   return (
-    <Link href={href}>
+    <Link href={rest.href}>
       <ChakraLink display='flex' align='center' color={activeColor} {...rest}>
         <Icon as={icon} fontSize='20' />
         <Text ml='4' fontWeight='medium'>
