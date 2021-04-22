@@ -12,6 +12,7 @@ import {
   Tbody,
   Td,
   Text,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
@@ -21,10 +22,22 @@ import { Pagination } from '../../components/Pagination';
 import { Sidebar } from '../../components/Sidebar';
 
 export default function UserList() {
+  const isMobileVersion = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
+
   return (
     <Box>
       <Header />
-      <Flex w='100%' my='6' maxWidth={1480} mx='auto' px='6'>
+      <Flex
+        w='100%'
+        my='6'
+        maxWidth={1480}
+        mx='auto'
+        px='6'
+        overflow={isMobileVersion ? 'scroll' : 'hidden'}
+      >
         <Sidebar />
         <Box flex='1' borderRadius={8} bg='gray.800' p='8'>
           <Flex mb='8' justify='space-between' align='center'>
