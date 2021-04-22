@@ -17,7 +17,7 @@ export function NavLink({ icon, children, ...rest }: NavLinkProps) {
   const activeColor = asPath === rest.href ? 'pink.500' : '';
 
   return (
-    <Link href={rest.href}>
+    <Link href={rest.href} passHref>
       <ChakraLink display='flex' align='center' color={activeColor} {...rest}>
         <Icon as={icon} fontSize='20' />
         <Text ml='4' fontWeight='medium'>
