@@ -14,7 +14,7 @@ interface NavLinkProps extends ChakraLinkProps {
 }
 export function NavLink({ icon, children, ...rest }: NavLinkProps) {
   const { asPath } = useRouter();
-  const activeColor = asPath === rest.href ? 'pink.500' : '';
+  const activeColor = asPath.includes(rest.href) ? 'pink.500' : '';
 
   return (
     <Link href={rest.href} passHref>
