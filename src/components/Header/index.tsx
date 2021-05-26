@@ -23,14 +23,14 @@ export function Header() {
       h='20'
       mx='auto'
       mt='4'
-      px='6'
+      px={['6', '2']}
       align='center'
     >
       {!isWideVersion && (
         <IconButton
           aria-label='Open navigation'
           icon={<Icon as={RiMenuLine} />}
-          fontSize='24'
+          size='lg'
           variant='unstyled'
           onClick={onOpen}
           mr='2'

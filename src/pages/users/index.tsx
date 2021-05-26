@@ -15,7 +15,7 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RiAddLine, RiPencilLine } from 'react-icons/ri';
 import { Header } from '../../components/Header';
 import { Pagination } from '../../components/Pagination';
@@ -25,6 +25,12 @@ export default function UserList() {
   const isMobileVersion = useBreakpointValue({
     base: true,
     lg: false,
+  });
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/users')
+      .then((res) => res.json())
+      .then((res) => console.log(res.data));
   });
 
   return (
