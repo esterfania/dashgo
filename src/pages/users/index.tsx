@@ -21,14 +21,16 @@ import { Pagination } from '../../components/Pagination';
 import { Sidebar } from '../../components/Sidebar';
 import { useUsers } from '../../services/hooks/useUsers';
 import { Header } from '../../components/Header/index';
+import { useState } from 'react';
 
 export default function UserList() {
-  const { data, isLoading, isFetching, error } = useUsers();
+  const [page, setPage] = useState(1);
+  const { data, isLoading, isFetching, error } = useUsers(page);
   const isMobileVersion = useBreakpointValue({
     base: true,
     lg: false,
   });
-
+  console.log(page);
   return (
     <Box>
       <Header />
@@ -83,7 +85,7 @@ export default function UserList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data.map((user) => {
+                  {data.users.map((user) => {
                     return (
                       <Tr px='6' key={user.id}>
                         <Td>
@@ -115,9 +117,9 @@ export default function UserList() {
                 </Tbody>
               </Table>
               <Pagination
-                totalCountOfRegisters={200}
-                currentPage={19}
-                onPageChange={() => {}}
+                totalCountOfRegisters={data.totalCount}
+                currentPage={page}
+                onPageChange={setPage}
               />
             </>
           )}

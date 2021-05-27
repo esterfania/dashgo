@@ -47,12 +47,13 @@ export function Pagination({
       align='center'
     >
       <Box>
-        <strong>0</strong> - <strong>2</strong> de <strong>100</strong>
+        <strong>0</strong> - <strong>2</strong> de{' '}
+        <strong>{totalCountOfRegisters}</strong>
       </Box>
       <Stack direction='row' spacing='2'>
         {currentPage > 1 + siblingCount && (
           <>
-            <PaginationItem number={1} />
+            <PaginationItem onPageChange={onPageChange} number={1} />
             {currentPage > 2 + siblingCount && (
               <Text
                 color='gray.300'
@@ -67,12 +68,28 @@ export function Pagination({
         )}
         {previousPage.length > 0 &&
           previousPage.map((page) => {
-            return <PaginationItem key={page} number={page} />;
+            return (
+              <PaginationItem
+                onPageChange={onPageChange}
+                key={page}
+                number={page}
+              />
+            );
           })}
-        <PaginationItem number={currentPage} isCurrent />
+        <PaginationItem
+          onPageChange={onPageChange}
+          number={currentPage}
+          isCurrent
+        />
         {nextPage.length > 0 &&
           nextPage.map((page) => {
-            return <PaginationItem key={page} number={page} />;
+            return (
+              <PaginationItem
+                onPageChange={onPageChange}
+                key={page}
+                number={page}
+              />
+            );
           })}
         {currentPage + siblingCount < lastPage && (
           <>
@@ -86,7 +103,7 @@ export function Pagination({
                 ...
               </Text>
             )}
-            <PaginationItem number={lastPage} />
+            <PaginationItem onPageChange={onPageChange} number={lastPage} />
           </>
         )}
       </Stack>
