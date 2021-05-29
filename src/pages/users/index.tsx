@@ -22,6 +22,8 @@ import { Sidebar } from '../../components/Sidebar';
 import { useUsers } from '../../services/hooks/useUsers';
 import { Header } from '../../components/Header/index';
 import { useState } from 'react';
+import { queryClient } from '../../services/queryClient';
+import { api } from '../../services/api';
 
 export default function UserList() {
   const [page, setPage] = useState(1);
@@ -30,7 +32,13 @@ export default function UserList() {
     base: true,
     lg: false,
   });
-  console.log(page);
+
+  async function handlePrefetchUser(userId: string) {
+    await queryClient.prefetchQuery(['user', userId], async () => {
+      const response = await api.get(`users/${userId}`);
+      return response.data;
+    });
+  }
   return (
     <Box>
       <Header />
@@ -107,6 +115,7 @@ export default function UserList() {
                             fontSize='small'
                             colorScheme='green'
                             leftIcon={<Icon as={RiPencilLine} fontSize='16' />}
+                            onMouseEnter={() => handlePrefetchUser(user.id)}
                           >
                             Editar
                           </Button>

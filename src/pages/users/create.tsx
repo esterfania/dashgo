@@ -47,7 +47,6 @@ export default function CreateUser() {
     event
   ) => {
     await new Promise((resolver) => setTimeout(resolver, 2000));
-    console.log(values);
   };
 
   return (
