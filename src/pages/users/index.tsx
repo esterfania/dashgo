@@ -33,11 +33,17 @@ export default function UserList() {
     lg: false,
   });
 
-  async function handlePrefetchUser(userId: string) {
-    await queryClient.prefetchQuery(['user', userId], async () => {
-      const response = await api.get(`users/${userId}`);
-      return response.data;
-    });
+  async function handlePrefetchUser(userId: number) {
+    await queryClient.prefetchQuery(
+      ['user', userId],
+      async () => {
+        const response = await api.get(`/users/${userId}`);
+        return response.data;
+      },
+      {
+        staleTime: 1000 * 60 * 10, //10min
+      }
+    );
   }
   return (
     <Box>
